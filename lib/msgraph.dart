@@ -2,6 +2,9 @@ library msgraph;
 
 import 'Component/graphme.dart';
 
+export 'Models/PhotoSize.dart';
+export 'Models/message.dart';
+
 //import 'package:http/http.dart' as http;
 
 class MsGraph {

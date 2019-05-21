@@ -1,3 +1,4 @@
+
 enum photoSize {
   xsSmall,
   xSmall,
@@ -9,7 +10,6 @@ enum photoSize {
   xxxLarge,
   xxxxlarge
 }
-
 class PhotoSize {
   static const Map<photoSize, String> sizeValue = {
     photoSize.xsSmall: '48x48',

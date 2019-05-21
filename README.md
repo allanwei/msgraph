@@ -1,6 +1,18 @@
 # msgraph
 
-A new Flutter package project.
+A new Flutter package project for Microsoft Graph Api.
+
+## Using
+
+The easiest way to use this library is via the top-level functions.
+
+```flutter
+import 'package:msgraph/msgraph.dart'
+
+var msGraph = MsGraph(token);
+var me=await msGraph.me.get(); //get me
+print('Me: $me');
+```
 
 ## Getting Started
 
