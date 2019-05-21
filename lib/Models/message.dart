@@ -42,8 +42,8 @@ class Message extends Equatable {
       this.subject,
       this.toRecipients,
       this.attachments});
-  @override
-  String toString() {}
+  
+ 
 
   Message.fromJson(Map<String, dynamic> json) {
     if (json['bccRecipients'] != null) {
