@@ -1,7 +1,7 @@
 name: msgraph
 description: Flutter package for Microsoft Graph.
 version: 0.0.2
-author: allanwei<allan.wei@hotmail.com>
+# author: allanwei<allan.wei@hotmail.com>
 homepage: https://github.com/allanwei/msgraph
 
 environment:
