@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/widgets.dart';
 
+// ignore: must_be_immutable
 class Message extends Equatable {
   List<Recipient> bccRecipients;
   Body body;
@@ -42,8 +43,6 @@ class Message extends Equatable {
       this.subject,
       this.toRecipients,
       this.attachments});
-  
- 
 
   Message.fromJson(Map<String, dynamic> json) {
     if (json['bccRecipients'] != null) {
@@ -145,8 +144,31 @@ class Message extends Equatable {
 
     return data;
   }
+
+  @override
+  List<Object> get props => [
+        bccRecipients,
+        body,
+        ccRecipients,
+        from,
+        hasAttachments,
+        id,
+        importance,
+        isDeliveryReceiptRequested,
+        isDraft,
+        isRead,
+        isReadReceiptRequested,
+        lastModifiedDateTime,
+        receivedDateTime,
+        replyTo,
+        sender,
+        subject,
+        toRecipients,
+        attachments
+      ];
 }
 
+// ignore: must_be_immutable
 class Body extends Equatable {
   String contentType;
   String content;
@@ -164,8 +186,12 @@ class Body extends Equatable {
     data['content'] = this.content;
     return data;
   }
+
+  @override
+  List<Object> get props => [contentType, content];
 }
 
+// ignore: must_be_immutable
 class Flag extends Equatable {
   String odataType;
 
@@ -180,6 +206,9 @@ class Flag extends Equatable {
     data['@odata.type'] = this.odataType;
     return data;
   }
+
+  @override
+  List<Object> get props => [odataType];
 }
 
 class Attachments {
