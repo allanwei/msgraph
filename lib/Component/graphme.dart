@@ -8,11 +8,11 @@ class Me {
   String events = 'https://graph.microsoft.com/v1.0/me/events';
   Map<String, String> _headers;
   static Me _me;
-  factory Me(token) {
+  factory Me(String token) {
     _me = new Me._(token);
     return _me;
   }
-  Me._(token) {
+  Me._(String token) {
     this._headers = {
       'Authorization': '$token',
     };
@@ -36,8 +36,9 @@ class Me {
       return null;
     }
   }
+
   Future<dynamic> _postresponse(
-      String action, Map<String, String> headers,dynamic body) async {
+      String action, Map<String, String> headers, dynamic body) async {
     if (headers.length > 0) {
       _headers.addAll(headers);
     }
@@ -47,7 +48,7 @@ class Me {
     } else {
       _uri = '$uri';
     }
-    var response = await http.post(_uri, headers: _headers,body: body);
+    var response = await http.post(_uri, headers: _headers, body: body);
     if (response.statusCode == 200) {
       return response.bodyBytes;
     } else {
@@ -71,17 +72,20 @@ class Me {
   }
 
   Future<dynamic> getMessages({String folderId}) async {
-    folderId??='';
-    if(folderId.isNotEmpty){
-        return await _getresponse('/mailFolers/$folderId/messages', {'Content-Type':'application/json'});
-    }else{
-    return await _getresponse(
-        '/messages', {'Content-Type': 'application/json'});
+    folderId ??= '';
+    if (folderId.isNotEmpty) {
+      return await _getresponse('/mailFolers/$folderId/messages',
+          {'Content-Type': 'application/json'});
+    } else {
+      return await _getresponse(
+          '/messages', {'Content-Type': 'application/json'});
     }
   }
-  Future<dynamic>createMessage(Message message) async{
-    
-    return await _postresponse('/messages',  {'Accept':'application/json',"Content-Type": "application/json"}, json.encode(message.toJson()));
-  }
 
+  Future<dynamic> createMessage(Message message) async {
+    return await _postresponse(
+        '/messages',
+        {'Accept': 'application/json', "Content-Type": "application/json"},
+        json.encode(message.toJson()));
+  }
 }

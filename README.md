@@ -2,9 +2,15 @@
 
 A new Flutter package project for Microsoft Graph Api.
 
-## Using
+## Dependencies
+
+This package depend on [msauth](https://pub.dev/packages/msauth)
+
+## Usage
 
 The easiest way to use this library is via the top-level functions.
+
+### Currently only support limited function
 
 ```flutter
 import 'package:msgraph/msgraph.dart'

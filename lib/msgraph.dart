@@ -1,5 +1,7 @@
 library msgraph;
 
+import 'package:msauth/Model/token.dart';
+
 import 'Component/graphme.dart';
 
 export 'Models/PhotoSize.dart';
@@ -10,12 +12,12 @@ export 'Models/message.dart';
 class MsGraph {
   Me me;
   static MsGraph _msGraph;
-  factory MsGraph(token) {
+  factory MsGraph(Token token) {
     if (MsGraph._msGraph == null)
-      MsGraph._msGraph = new MsGraph._internal(token);
+      MsGraph._msGraph = new MsGraph._internal(token.accessToken);
     return _msGraph;
   }
-  MsGraph._internal(token) {
-    this.me = new Me(token);
+  MsGraph._internal(String accessToken) {
+    this.me = new Me(accessToken);
   }
 }
